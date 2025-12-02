@@ -1,0 +1,52 @@
+/* YouTube-like Header with Dark Background */
+.youtube-header {
+  background-color: #181818; /* Dark background color (similar to YouTube's dark theme) */
+  color: white; /* Light text color for contrast */
+  box-shadow: none; /* No shadow for a cleaner look */
+  padding: 0 16px; /* Padding for spacing */
+}
+
+.youtube-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF0000; /* YouTube Red for the logo */
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto; /* This will push the elements to the right */
+}
+
+mat-form-field {
+  width: 300px; /* Width for the search bar */
+  margin-right: 16px; /* Margin for spacing */
+  color: white; /* Text color inside the search bar */
+}
+
+mat-input-element {
+  color: white; /* Text color inside input fields */
+}
+
+button mat-icon {
+  font-size: 24px; /* Icon size */
+  color: white; /* Light color for the icons */
+}
+
+button.mat-raised-button {
+  background-color: #FF0000; /* Red button for Login */
+  color: white;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+button.mat-raised-button:hover {
+  background-color: #cc0000; /* Darker red when hovered */
+}
+
+mat-form-field.mat-focused .mat-form-field-label {
+  color: white; /* Keep label white when focused */
+}
+
+mat-form-field .mat-form-field-underline {
+  background-color: white; /* White underline for the search input */
+}

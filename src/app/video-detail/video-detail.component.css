@@ -1,0 +1,6 @@
+.video-detail {
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 65%; /* Keep the flex setting */
+    aspect-ratio: 16 / 9; /* Maintain YouTube's video aspect ratio */
+}
