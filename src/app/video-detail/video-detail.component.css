@@ -4,3 +4,42 @@
     width: 65%; /* Keep the flex setting */
     aspect-ratio: 16 / 9; /* Maintain YouTube's video aspect ratio */
 }
+
+
+
+.video-container {
+    display: flex;
+    gap: 2%;
+}
+
+.video-detail {
+    flex: 0 0 65%;
+}
+
+.video-main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.video-info-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.video-info-left {
+    flex: 1 1 50%;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.video-info-right {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.suggestion-bar {
+    flex: 0 0 30%;
+}
