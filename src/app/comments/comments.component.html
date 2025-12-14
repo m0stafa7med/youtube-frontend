@@ -1,0 +1,54 @@
+<div class="comments-container">
+    <!-- HEADER -->
+    <div class="comments-header">
+        <span class="count">1,234 Comments</span>
+    </div>
+
+    <!-- ADD COMMENT -->
+    <div class="add-comment">
+        <img class="avatar" src="assets/avatar.png" />
+
+        <div class="comment-input">
+            <input
+                    type="text"
+                    placeholder="Add a comment..."
+                    (focus)="focused = true"
+            />
+
+            <div class="comment-actions" *ngIf="focused">
+                <button mat-button (click)="cancel()">Cancel</button>
+                <button mat-raised-button color="primary">
+                    Comment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMENTS LIST -->
+    <div class="comment" *ngFor="let comment of comments">
+        <img class="avatar" src="assets/avatar.png" />
+
+        <div class="comment-body">
+            <div class="comment-header">
+                <span class="username">{{ comment.user }}</span>
+                <span class="time">{{ comment.time }}</span>
+            </div>
+
+            <div class="comment-text">
+                {{ comment.text }}
+            </div>
+
+            <div class="comment-actions-row">
+                <button mat-icon-button>
+                    <mat-icon>thumb_up</mat-icon>
+                </button>
+                <span>{{ comment.likes }}</span>
+
+                <button mat-icon-button>
+                    <mat-icon>thumb_down</mat-icon>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
