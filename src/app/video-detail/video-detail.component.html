@@ -1,35 +1,85 @@
-<div class="video-container">
-    <div class="video-detail">
-        <div class="video-main">
-            <app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl"></app-video-player>
-            <div class="mat-title">{{videoTitle}}</div>
+<div class="video-page">
+    <!-- LEFT: VIDEO + DETAILS -->
+    <div class="video-primary">
+        <app-video-player
+                *ngIf="videoAvailable"
+                [videoUrl]="videoUrl">
+        </app-video-player>
 
-            <div class="video-info-row">
-                <div class="video-info-left">
-                    <span class="view-count">{{viewCount}}</span>
-                    <span class="dot"></span>
-                    <span class="video-upload-date">Today</span>
+        <!-- TITLE -->
+        <h1 class="video-title">{{ videoTitle }}</h1>
+
+        <!-- INFO ROW -->
+        <div class="video-meta">
+            <div class="video-meta-left">
+                <span>{{ viewCount }} views</span>
+                <span class="dot"></span>
+                <span>Today</span>
+            </div>
+
+            <div class="video-actions">
+                <!-- LIKE / DISLIKE GROUP -->
+                <div class="action-group">
+                    <button class="action-btn">
+                        <mat-icon>thumb_up</mat-icon>
+                        <span>12K</span>
+                    </button>
+
+                    <div class="divider"></div>
+
+                    <button class="action-btn">
+                        <mat-icon>thumb_down</mat-icon>
+                    </button>
                 </div>
-                <div class="video-info-right">
-                    <!-- like/dislike buttons (commented out) -->
+
+                <!-- SHARE -->
+                <button class="action-btn single">
+                    <mat-icon>share</mat-icon>
+                    <span>Share</span>
+                </button>
+
+                <!-- MORE -->
+                <button class="action-btn single icon-only">
+                    <mat-icon>more_horiz</mat-icon>
+                </button>
+            </div>
+
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- CHANNEL ROW -->
+        <div class="channel-row">
+            <div class="channel-info">
+                <img class="avatar" src="assets/avatar.png" alt="channel" />
+                <div>
+                    <div class="channel-name">Mostafa Darwesh</div>
+                    <div class="channel-subs">1M subscribers</div>
                 </div>
             </div>
 
-            <mat-divider></mat-divider>
-
-            <mat-card-header>
-                <mat-card-title>Mostafa Darwesh</mat-card-title>
-                <mat-card-subtitle class="subtitles">1M Subscribers</mat-card-subtitle>
-                <!-- subscribe/unsubscribe buttons -->
-            </mat-card-header>
-
-            <div>{{videoDescription}}</div>
-            <mat-divider></mat-divider>
-
-            <!-- Comments component -->
-            <!-- <app-comments *ngIf="videoAvailable" [videoId]="videoId"></app-comments> -->
+            <button mat-raised-button color="warn">
+                Subscribe
+            </button>
         </div>
-    </div>
 
-    <div class="suggestion-bar"></div>
+        <mat-divider></mat-divider>
+
+        <!-- DESCRIPTION -->
+        <div class="video-description">
+            This video has a description
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- COMMENTS -->
+        <app-comments
+                *ngIf="videoAvailable"
+                [videoId]="videoId">
+        </app-comments>    </div>
+
+    <!-- RIGHT: SUGGESTIONS -->
+    <div class="video-secondary">
+<!--        <app-video-suggestions></app-video-suggestions>-->
+    </div>
 </div>

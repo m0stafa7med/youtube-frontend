@@ -30,12 +30,15 @@ export class SaveVideoDetailsComponent {
     fileSelected = false;
     videoUrl!: string;
     thumbnailUrl!: string;
+    videoAvailable: boolean = false;
+
 
     constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
                 private matSnackBar: MatSnackBar) {
         this.videoId = this.activatedRoute.snapshot.params['videoId'];
         this.videoService.getVideo(this.videoId).subscribe(data => {
             this.videoUrl = data.videoUrl;
+            this.videoAvailable = true;
             this.thumbnailUrl = data.thumbnailUrl;
         })
         this.saveVideoDetailsForm = new FormGroup({
@@ -81,7 +84,6 @@ export class SaveVideoDetailsComponent {
     }
 
     saveVideo() {
-        // Call the video service to make a http call to our backend
         const videoMetaData: VideoDto = {
             "id": this.videoId,
             "title": this.saveVideoDetailsForm.get('title')?.value,

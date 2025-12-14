@@ -1,0 +1,140 @@
+/*!* UPLOAD PAGE CARD *!*/
+/*.upload-page {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: calc(100vh - 64px);*/
+/*    background: #f9f9f9;*/
+/*}*/
+
+/*.upload-card {*/
+/*    width: 500px;*/
+/*    background: #fff;*/
+/*    border-radius: 12px;*/
+/*    padding: 32px;*/
+/*    text-align: center;*/
+/*    box-shadow: 0 2px 10px rgba(0,0,0,0.1);*/
+/*}*/
+
+/*.upload-icon {*/
+/*    font-size: 64px;*/
+/*    color: #606060;*/
+/*}*/
+
+/*h2 {*/
+/*    margin: 16px 0 4px;*/
+/*}*/
+
+/*.subtitle {*/
+/*    font-size: 14px;*/
+/*    color: #606060;*/
+/*}*/
+
+/*!* DROP ZONE WITHOUT OUTER BORDER *!*/
+/*.drop-zone {*/
+/*    margin-top: 24px;*/
+/*    padding: 32px;*/
+/*    background: #fafafa;  !* light neutral background *!*/
+/*    border: none;         !* remove outer dashed border *!*/
+/*    border-radius: 12px;*/
+/*    cursor: pointer;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    min-height: 150px;*/
+/*    transition: background 0.3s;*/
+/*}*/
+
+/*.drop-zone:hover {*/
+/*    background: #f2f2f2; !* subtle hover effect *!*/
+/*}*/
+
+/*.drop-content {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    gap: 12px;*/
+/*}*/
+
+/*.hint {*/
+/*    font-size: 12px;*/
+/*    color: #606060;*/
+/*}*/
+
+/*!* FILE PREVIEW WITHOUT INNER BORDER *!*/
+/*.file-preview {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 12px;*/
+/*    margin-top: 24px;*/
+/*    padding: 0;           !* remove inner padding *!*/
+/*    background: transparent; !* remove background *!*/
+/*    border: none;         !* remove inner border *!*/
+/*}*/
+
+/*.file-preview mat-icon {*/
+/*    font-size: 40px;*/
+/*}*/
+
+/*.file-info {*/
+/*    text-align: left;*/
+/*}*/
+
+/*.file-info span {*/
+/*    font-size: 12px;*/
+/*    color: #606060;*/
+/*}*/
+
+/*.upload-btn {*/
+/*    margin-top: 24px;*/
+/*    width: 100%;*/
+/*}*/
+
+
+
+.upload-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 64px);
+    background: #f9f9f9;
+}
+
+.upload-card {
+    width: 500px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin: 16px 0 4px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #606060;
+    margin-bottom: 24px;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    background: transparent; /* no inner background */
+    border: none;            /* no inner border */
+    padding: 0;
+}
+
+.file-info span {
+    font-size: 12px;
+    color: #606060;
+}
+
+.upload-btn {
+    margin-top: 24px;
+    width: 100%;
+}

@@ -1,25 +1,118 @@
-<div class="center">
+<!--&lt;!&ndash;<div class="center">&ndash;&gt;-->
 
-    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
-                   (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-            Drag and Drop Videos in this section (or).
-            <button type="button" (click)="openFileSelector()">Browse Files</button>
-        </ng-template>
-    </ngx-file-drop>
-    <div class="upload-table">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-            </thead>
-            <tbody class="upload-name-style">
-            <tr *ngFor="let item of files; let i=index">
-                <td><strong>{{ item.relativePath }}</strong></td>
-            </tr>
-            </tbody>
-        </table>
+<!--&lt;!&ndash;    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"&ndash;&gt;-->
+<!--&lt;!&ndash;                   (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">&ndash;&gt;-->
+<!--&lt;!&ndash;            Drag and Drop Videos in this section (or).&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="button" (click)="openFileSelector()">Browse Files</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ng-template>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ngx-file-drop>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="upload-table">&ndash;&gt;-->
+<!--&lt;!&ndash;        <table class="table">&ndash;&gt;-->
+<!--&lt;!&ndash;            <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th>Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;            <tbody class="upload-name-style">&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr *ngFor="let item of files; let i=index">&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><strong>{{ item.relativePath }}</strong></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;        </table>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button mat-button (click)="uploadVideo()" *ngIf="fileUploaded">Upload Video</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+<!--<div class="upload-page">-->
+<!--    <div class="upload-card">-->
+
+
+<!--        <h2>Upload a video</h2>-->
+<!--        <p class="subtitle">-->
+<!--            Drag and drop a video file to upload-->
+<!--        </p>-->
+
+<!--        <ngx-file-drop-->
+<!--                class="drop-zone"-->
+<!--                (onFileDrop)="dropped($event)"-->
+<!--                (onFileOver)="fileOver($event)"-->
+<!--                (onFileLeave)="fileLeave($event)">-->
+<!--            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">-->
+<!--                <div class="drop-content">-->
+<!--                    <button mat-raised-button color="primary" (click)="openFileSelector()">-->
+<!--                        Select files-->
+<!--                    </button>-->
+<!--                    <p class="hint">Your videos will be private until you publish them.</p>-->
+<!--                </div>-->
+<!--            </ng-template>-->
+<!--        </ngx-file-drop>-->
+
+
+<!--        &lt;!&ndash; FILE PREVIEW &ndash;&gt;-->
+<!--        <div class="file-preview" *ngIf="fileUploaded">-->
+<!--&lt;!&ndash;            <mat-icon>movie</mat-icon>&ndash;&gt;-->
+<!--            <div class="file-info">-->
+<!--                <strong>{{ fileName }}</strong>-->
+<!--                <span>Ready to upload</span>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; ACTION &ndash;&gt;-->
+<!--        <button-->
+<!--                mat-raised-button-->
+<!--                color="primary"-->
+<!--                class="upload-btn"-->
+<!--                *ngIf="fileUploaded"-->
+<!--                (click)="uploadVideo()"-->
+<!--        >-->
+<!--            Next-->
+<!--        </button>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<div class="upload-page">
+    <div class="upload-card">
+
+        <h2>Upload a video</h2>
+        <p class="subtitle">
+            Your videos will be private until you publish them.
+        </p>
+
+        <!-- SELECT FILE BUTTON -->
+        <input
+                type="file"
+                accept="video/*"
+                #fileInput
+                (change)="onFileSelected($event)"
+                hidden
+        />
+        <button mat-raised-button color="primary" (click)="fileInput.click()">
+            Select files
+        </button>
+
+        <!-- FILE PREVIEW -->
+        <div class="file-preview" *ngIf="fileUploaded">
+            <div class="file-info">
+                <strong>{{ fileName }}</strong>
+                <span>Ready to upload</span>
+            </div>
+        </div>
+
+        <!-- NEXT BUTTON -->
+        <button
+                mat-raised-button
+                color="primary"
+                class="upload-btn"
+                *ngIf="fileUploaded"
+                (click)="uploadVideo()"
+        >
+            Upload
+        </button>
+
     </div>
-    <button mat-button (click)="uploadVideo()" *ngIf="fileUploaded">Upload Video</button>
 </div>

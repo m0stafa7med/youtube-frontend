@@ -4,6 +4,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
+import {RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-header',
@@ -13,7 +14,8 @@ import {MatButtonModule} from "@angular/material/button";
         MatIconModule,
         MatToolbarModule,
         NgIf,
-        MatButtonModule
+        MatButtonModule,
+        RouterLink
     ],
     styleUrls: ['./header.component.css']
 })

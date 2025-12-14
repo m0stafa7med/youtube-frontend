@@ -1,17 +1,31 @@
 <mat-toolbar class="youtube-header">
+    <mat-toolbar-row>
+        <!-- LOGO -->
+        <span class="youtube-logo" routerLink="/" title="Home">
+      YouTube
+    </span>
 
-  <mat-toolbar-row>
-    <span class="youtube-logo">YouTube</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>video_call</mat-icon>
-    </button>
-    <button *ngIf="isAuthenticated ; else noAuth" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <ng-template #noAuth>
-      <button mat-raised-button (click)="login()">Login</button>
+        <span class="example-spacer"></span>
 
-    </ng-template>
-  </mat-toolbar-row>
+        <!-- UPLOAD VIDEO -->
+        <button
+                mat-icon-button
+                routerLink="/upload-video"
+                aria-label="Upload video"
+        >
+            <mat-icon>video_call</mat-icon>
+        </button>
+
+        <!-- ACCOUNT -->
+        <button
+                *ngIf="isAuthenticated; else noAuth"
+                mat-icon-button
+        >
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <ng-template #noAuth>
+            <button mat-raised-button (click)="login()">Login</button>
+        </ng-template>
+    </mat-toolbar-row>
 </mat-toolbar>

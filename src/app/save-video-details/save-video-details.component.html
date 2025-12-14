@@ -1,48 +1,56 @@
 <div class="add-video-container">
-    <div class="spacer"></div>
 
+    <!-- FORM SECTION -->
     <div class="form-section">
-        <h2 class="mat-title">Add Video Metadata</h2>
+        <h2 class="title">Add Video Metadata</h2>
 
         <form [formGroup]="saveVideoDetailsForm">
 
+            <!-- TITLE -->
             <div class="form-field">
                 <label>Title</label>
-                <input type="text" [formControl]="title" required>
+                <input type="text" [formControl]="title" placeholder="Add a title that describes your video" required>
             </div>
 
+            <!-- DESCRIPTION -->
             <div class="form-field">
                 <label>Description</label>
-                <input type="text" [formControl]="description" required>
+                <textarea [formControl]="description" placeholder="Tell viewers about your video" rows="4"
+                          required></textarea>
             </div>
 
+            <!-- VIDEO STATUS -->
             <div class="form-field">
                 <label>Video Status</label>
                 <select [formControl]="videoStatus">
-                    <option value="PUBLIC">PUBLIC</option>
-                    <option value="PRIVATE">PRIVATE</option>
+                    <option value="PUBLIC">Public</option>
+                    <option value="PRIVATE">Private</option>
                 </select>
             </div>
 
+
+            <!-- THUMBNAIL UPLOAD -->
             <div class="form-field">
-                <label>Upload Thumbnail:</label>
+                <label>Upload Thumbnail</label>
                 <input type="file" (change)="onFileSelected($event)">
-                <div *ngIf="fileSelected">
-                    <p>Selected File: {{selectedFileName}}</p>
-                    <button type="button" (click)="onUpload()">Upload</button>
+                <div class="thumbnail-preview" *ngIf="fileSelected">
+                    <p>{{ selectedFileName }}</p>
+                    <button type="button" mat-raised-button color="primary" (click)="onUpload()">Upload Thumbnail
+                    </button>
                 </div>
             </div>
 
+            <!-- SAVE BUTTON -->
             <div class="form-field">
-                <button type="button" (click)="saveVideo()">Save</button>
+                <button type="button" mat-raised-button color="primary" (click)="saveVideo()">Save</button>
             </div>
 
         </form>
     </div>
 
-    <div class="video-preview">
+    <!-- VIDEO PREVIEW SECTION -->
+    <div class="video-preview" *ngIf="videoAvailable">
+        <h3>Video Preview</h3>
         <app-video-player [videoUrl]="videoUrl"></app-video-player>
     </div>
-
-    <div class="spacer">Hi</div>
 </div>

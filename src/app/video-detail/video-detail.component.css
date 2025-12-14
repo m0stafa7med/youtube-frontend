@@ -1,45 +1,157 @@
-.video-detail {
-    margin-top: 50px;
-    margin-left: 100px;
-    width: 65%; /* Keep the flex setting */
-    aspect-ratio: 16 / 9; /* Maintain YouTube's video aspect ratio */
-}
-
-
-
-.video-container {
+.video-page {
     display: flex;
-    gap: 2%;
+    gap: 24px;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 24px;
 }
 
-.video-detail {
-    flex: 0 0 65%;
-}
-
-.video-main {
+/* LEFT SIDE */
+.video-primary {
+    flex: 1 1 68%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
-.video-info-row {
+.video-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* META ROW */
+.video-meta {
     display: flex;
     justify-content: space-between;
-}
-
-.video-info-left {
-    flex: 1 1 50%;
-    display: flex;
-    gap: 4px;
     align-items: center;
 }
 
-.video-info-right {
-    flex: 1 1 50%;
+.video-meta-left {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    color: #606060;
+    font-size: 14px;
 }
 
-.suggestion-bar {
-    flex: 0 0 30%;
+.dot {
+    width: 4px;
+    height: 4px;
+    background: #606060;
+    border-radius: 50%;
 }
+
+.video-meta-right button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+}
+
+/* CHANNEL */
+.channel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.channel-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.channel-name {
+    font-weight: 600;
+}
+
+.channel-subs {
+    font-size: 13px;
+    color: #606060;
+}
+
+/* DESCRIPTION */
+.video-description {
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* RIGHT SIDE */
+.video-secondary {
+    flex: 1 1 32%;
+}
+
+
+
+.video-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* LIKE/DISLIKE PILL */
+.action-group {
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.action-group .action-btn {
+    padding: 6px 12px;
+}
+
+/* DIVIDER */
+.divider {
+    width: 1px;
+    height: 20px;
+    background: #ccc;
+}
+
+/* BUTTON BASE */
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* SINGLE BUTTON */
+.action-btn.single {
+    background: #f2f2f2;
+    border-radius: 20px;
+    padding: 6px 14px;
+}
+
+/* ICON ONLY */
+.action-btn.icon-only {
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* HOVER */
+.action-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* ICON SIZE */
+.action-btn mat-icon {
+    font-size: 20px;
+}
+
