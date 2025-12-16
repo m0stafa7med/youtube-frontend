@@ -5,6 +5,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
     selector: 'app-header',
@@ -15,7 +16,10 @@ import {RouterLink} from "@angular/router";
         MatToolbarModule,
         NgIf,
         MatButtonModule,
-        RouterLink
+        RouterLink,
+        MatMenuTrigger,
+        MatMenu,
+        MatMenuItem
     ],
     styleUrls: ['./header.component.css']
 })
@@ -42,5 +46,6 @@ export class HeaderComponent implements OnInit {
 
   logOff() {
     this.oidcSecurityService.logoffAndRevokeTokens();
+    this.oidcSecurityService.logoffLocal();
   }
 }
