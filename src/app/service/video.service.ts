@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UploadVideoResponse} from "../upload-video/UploadVideoResponse";
-import {VideoDto} from "../video-dto";
+import {VideoDto} from "../dto/video-dto";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -34,11 +34,11 @@ export class VideoService {
     }
 
     saveVideo(videoMetaData: VideoDto): Observable<VideoDto> {
-        return this.httpClient.put<VideoDto>(`${environment.apiUrl}/videos/`, videoMetaData);
+        return this.httpClient.put<VideoDto>(`${environment.apiUrl}/videos`, videoMetaData);
     }
 
     getAllVideos(): Observable<Array<VideoDto>> {
-        return this.httpClient.get<Array<VideoDto>>(`${environment.apiUrl}/videos/`);
+        return this.httpClient.get<Array<VideoDto>>(`${environment.apiUrl}/videos`);
     }
 
     likeVideo(videoId: string): Observable<VideoDto> {

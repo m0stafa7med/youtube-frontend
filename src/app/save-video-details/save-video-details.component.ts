@@ -4,7 +4,7 @@ import {MatChipInputEvent} from "@angular/material/chips";
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {VideoDto} from "../video-dto";
+import {VideoDto} from "../dto/video-dto";
 import {VideoService} from "../service/video.service";
 
 @Component({

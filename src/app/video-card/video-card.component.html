@@ -1,0 +1,30 @@
+<mat-card class="video-card" routerLink="/video-details/{{ video.id }}">
+
+    <div class="thumbnail-wrapper">
+        <img
+                class="thumbnail"
+                [src]="video.thumbnailUrl"
+                alt="Thumbnail">
+    </div>
+
+    <mat-card-header class="card-header">
+
+        <!-- Channel avatar -->
+        <img
+                mat-card-avatar
+                class="channel-avatar"
+                src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+                alt="Channel">
+
+        <div class="header-text">
+            <mat-card-title class="title">
+                {{ video.title }}
+            </mat-card-title>
+
+            <mat-card-subtitle>MrBeast</mat-card-subtitle>
+            <mat-card-subtitle>{{ video.viewCount }} views</mat-card-subtitle>
+        </div>
+
+    </mat-card-header>
+
+</mat-card>

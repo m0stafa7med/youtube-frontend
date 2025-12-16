@@ -18,17 +18,17 @@
             </div>
 
             <div class="video-actions">
-                <!-- LIKE / DISLIKE GROUP -->
                 <div class="action-group">
-                    <button class="action-btn">
+                    <button class="action-btn" (click)="likeVideo()">
                         <mat-icon>thumb_up</mat-icon>
-                        <span>12K</span>
+                        <span>{{ likeCount }}</span>
                     </button>
 
                     <div class="divider"></div>
 
-                    <button class="action-btn">
+                    <button class="action-btn" (click)="disLikeVideo()">
                         <mat-icon>thumb_down</mat-icon>
+                        <span>{{ dislikeCount }}</span>
                     </button>
                 </div>
 
@@ -51,15 +51,26 @@
         <!-- CHANNEL ROW -->
         <div class="channel-row">
             <div class="channel-info">
-                <img class="avatar" src="assets/avatar.png" alt="channel" />
+                <img
+                        mat-card-avatar
+                        class="channel-avatar"
+                        src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+                        alt="Channel">
                 <div>
                     <div class="channel-name">Mostafa Darwesh</div>
                     <div class="channel-subs">1M subscribers</div>
                 </div>
             </div>
 
-            <button mat-raised-button color="warn">
+            <button mat-raised-button color="warn" *ngIf="showSubscribeButton" (click)="subscribeToUser()">
                 Subscribe
+            </button>
+            <button
+                    mat-raised-button
+                    class="subscribed-btn"
+                    *ngIf="showUnSubscribeButton"
+                    (click)="unSubscribeToUser()">
+                Subscribed
             </button>
         </div>
 
@@ -76,10 +87,11 @@
         <app-comments
                 *ngIf="videoAvailable"
                 [videoId]="videoId">
-        </app-comments>    </div>
+        </app-comments>
+    </div>
 
     <!-- RIGHT: SUGGESTIONS -->
     <div class="video-secondary">
-<!--        <app-video-suggestions></app-video-suggestions>-->
+        <!--        <app-video-suggestions></app-video-suggestions>-->
     </div>
 </div>

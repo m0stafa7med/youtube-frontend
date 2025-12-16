@@ -1,0 +1,57 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+/* Card */
+.video-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Thumbnail */
+.thumbnail-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Header layout */
+.card-header {
+    align-items: flex-start;
+}
+
+/* Channel avatar */
+.channel-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 16px; /* 👈 space from text */
+}
+
+/* Text wrapper */
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* 👈 vertical spacing between title/subtitles */
+}
+
+/* Title */
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

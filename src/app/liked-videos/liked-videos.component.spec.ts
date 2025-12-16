@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommentsComponent } from './comments.component';
+import { LikedVideosComponent } from './liked-videos.component';
 
-describe('CommentsComponent', () => {
-  let component: CommentsComponent;
-  let fixture: ComponentFixture<CommentsComponent>;
+describe('LikedVideosComponent', () => {
+  let component: LikedVideosComponent;
+  let fixture: ComponentFixture<LikedVideosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommentsComponent]
+      imports: [LikedVideosComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CommentsComponent);
+    fixture = TestBed.createComponent(LikedVideosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
