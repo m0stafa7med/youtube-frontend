@@ -1,0 +1,16 @@
+<div class="trending-container">
+    <h3>Trending</h3>
+
+    <app-loading-spinner *ngIf="loading" message="Loading trending videos..."></app-loading-spinner>
+
+    <div class="video-grid" *ngIf="!loading && trendingVideos.length > 0">
+        <app-video-card
+                *ngFor="let video of trendingVideos"
+                [video]="video">
+        </app-video-card>
+    </div>
+
+    <div class="no-videos" *ngIf="!loading && trendingVideos.length === 0">
+        <p>No trending videos available right now.</p>
+    </div>
+</div>

@@ -48,4 +48,29 @@ export class VideoService {
     disLikeVideo(videoId: string): Observable<VideoDto> {
         return this.httpClient.post<VideoDto>(`${environment.apiUrl}/videos/` + videoId + "/disLike", null);
     }
+
+    searchVideos(query: string, page: number, size: number): Observable<any> {
+        return this.httpClient.get<any>(`${environment.apiUrl}/videos/search`, {
+            params: {query, page: page.toString(), size: size.toString()}
+        });
+    }
+
+    getAllVideosPaginated(page: number, size: number, sort?: string, category?: string): Observable<any> {
+        let params: any = {page: page.toString(), size: size.toString()};
+        if (sort) {
+            params.sort = sort;
+        }
+        if (category) {
+            params.category = category;
+        }
+        return this.httpClient.get<any>(`${environment.apiUrl}/videos`, {params});
+    }
+
+    getTrendingVideos(): Observable<VideoDto[]> {
+        return this.httpClient.get<VideoDto[]>(`${environment.apiUrl}/videos/trending`);
+    }
+
+    deleteVideo(videoId: string): Observable<any> {
+        return this.httpClient.delete<any>(`${environment.apiUrl}/videos/${videoId}`);
+    }
 }

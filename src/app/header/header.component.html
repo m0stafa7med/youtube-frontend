@@ -5,7 +5,56 @@
       YouTube
     </span>
 
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <input type="text"
+                   [(ngModel)]="searchQuery"
+                   placeholder="Search"
+                   (keyup.enter)="onSearch()">
+            <button mat-icon-button (click)="onSearch()" aria-label="Search">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+
         <span class="example-spacer"></span>
+
+        <!-- NOTIFICATION BELL -->
+        <div class="notification-wrapper" *ngIf="isAuthenticated">
+            <button mat-icon-button (click)="toggleNotifications()" aria-label="Notifications">
+                <mat-icon [matBadge]="unreadCount"
+                          [matBadgeHidden]="unreadCount === 0"
+                          matBadgeColor="warn"
+                          matBadgeSize="small">notifications</mat-icon>
+            </button>
+
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown" *ngIf="showNotifications">
+                <div class="notification-header">
+                    <span>Notifications</span>
+                    <button mat-button (click)="markAllRead()" *ngIf="unreadCount > 0">
+                        Mark all as read
+                    </button>
+                </div>
+                <div class="notification-list">
+                    <div class="notification-item"
+                         *ngFor="let notification of notifications"
+                         [class.unread]="!notification.read"
+                         (click)="onNotificationClick(notification)">
+                        <img class="notification-thumb"
+                             *ngIf="notification.videoThumbnail"
+                             [src]="notification.videoThumbnail"
+                             alt="">
+                        <div class="notification-content">
+                            <p class="notification-message">{{ notification.message }}</p>
+                            <span class="notification-time">{{ notification.createdAt | timeAgo }}</span>
+                        </div>
+                    </div>
+                    <div class="notification-empty" *ngIf="notifications.length === 0">
+                        No notifications
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- UPLOAD VIDEO -->
         <button

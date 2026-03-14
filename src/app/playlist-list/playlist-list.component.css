@@ -1,0 +1,134 @@
+.playlist-list-container {
+    padding: 24px;
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.playlist-header h3 {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #181818;
+    margin: 0;
+}
+
+/* Create Form */
+.create-form {
+    margin-bottom: 24px;
+}
+
+.form-card {
+    padding: 20px;
+    max-width: 500px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-field label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Roboto, sans-serif;
+}
+
+.form-field textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+/* Playlists Grid */
+.playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.playlist-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.playlist-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.playlist-icon {
+    width: 48px;
+    height: 48px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playlist-icon mat-icon {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    color: #606060;
+}
+
+.playlist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.playlist-name {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+    color: #181818;
+    margin: 0;
+}
+
+.playlist-meta {
+    font-size: 13px;
+    color: #606060;
+    font-family: Roboto, sans-serif;
+}
+
+.playlist-visibility {
+    font-size: 12px;
+    color: #909090;
+    font-family: Roboto, sans-serif;
+    text-transform: capitalize;
+}
+
+.no-playlists {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+    color: #606060;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+}

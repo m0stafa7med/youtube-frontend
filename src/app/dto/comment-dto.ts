@@ -1,4 +1,10 @@
 export interface CommentDto {
-    commentText: string,
-    authorId: string
+    id: string;
+    commentText: string;
+    authorId: string;
+    authorFullName: string;
+    authorPicture: string;
+    createdAt: string;
+    parentCommentId: string;
+    replies: CommentDto[];
 }

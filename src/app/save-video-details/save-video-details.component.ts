@@ -19,6 +19,7 @@ export class SaveVideoDetailsComponent {
     title: FormControl = new FormControl('');
     description: FormControl = new FormControl('');
     videoStatus: FormControl = new FormControl('');
+    category: FormControl = new FormControl('');
     selectable = true;
     removable = true;
     addOnBlur = true;
@@ -45,6 +46,7 @@ export class SaveVideoDetailsComponent {
             title: this.title,
             description: this.description,
             videoStatus: this.videoStatus,
+            category: this.category,
         })
     }
 
@@ -90,11 +92,17 @@ export class SaveVideoDetailsComponent {
             "description": this.saveVideoDetailsForm.get('description')?.value,
             "tags": this.tags,
             "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
+            "category": this.saveVideoDetailsForm.get('category')?.value || '',
             "videoUrl": this.videoUrl,
             "thumbnailUrl": this.thumbnailUrl,
             "likeCount": 0,
             "dislikeCount": 0,
-            "viewCount": 0
+            "viewCount": 0,
+            "createdAt": '',
+            "duration": 0,
+            "userId": '',
+            "userFullName": '',
+            "userPicture": ''
         }
         this.videoService.saveVideo(videoMetaData).subscribe(data => {
             this.matSnackBar.open("Video Metadata Updated successfully", "OK");

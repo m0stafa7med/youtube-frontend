@@ -1,0 +1,20 @@
+<div class="search-results-container">
+    <h3 *ngIf="searchQuery">Search results for "{{ searchQuery }}"</h3>
+
+    <div class="video-grid" *ngIf="videos.length > 0">
+        <app-video-card
+                *ngFor="let video of videos"
+                [video]="video">
+        </app-video-card>
+    </div>
+
+    <div class="no-results" *ngIf="!loading && videos.length === 0 && searchQuery">
+        <p>No results found for "{{ searchQuery }}"</p>
+    </div>
+
+    <app-loading-spinner *ngIf="loading" message="Searching..."></app-loading-spinner>
+
+    <div class="load-more" *ngIf="!loading && hasMore && videos.length > 0">
+        <button class="load-more-btn" (click)="loadMore()">Load More</button>
+    </div>
+</div>

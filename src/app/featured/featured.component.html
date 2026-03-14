@@ -1,8 +1,39 @@
 <h3>Featured Videos</h3>
 
-<div class="video-grid">
+<!-- Filters -->
+<div class="filters-row">
+    <div class="sort-container">
+        <label>Sort by:</label>
+        <select [value]="sortBy" (change)="onSortChange($any($event.target).value)">
+            <option value="createdAt">Newest</option>
+            <option value="viewCount">Most Viewed</option>
+            <option value="likeCount">Most Liked</option>
+        </select>
+    </div>
+
+    <div class="category-chips">
+        <button class="chip"
+                *ngFor="let category of categories"
+                [class.active]="selectedCategory === category"
+                (click)="onCategoryChange(category)">
+            {{ category }}
+        </button>
+    </div>
+</div>
+
+<div class="video-grid" *ngIf="featuredVideos.length > 0">
     <app-video-card
             *ngFor="let featuredVideo of featuredVideos"
             [video]="featuredVideo">
     </app-video-card>
+</div>
+
+<app-loading-spinner *ngIf="loading" message="Loading videos..."></app-loading-spinner>
+
+<div class="no-videos" *ngIf="!loading && featuredVideos.length === 0">
+    <p>No videos found.</p>
+</div>
+
+<div class="load-more" *ngIf="!loading && hasMore && featuredVideos.length > 0">
+    <button class="load-more-btn" (click)="loadMore()">Load More</button>
 </div>

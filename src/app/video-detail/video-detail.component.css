@@ -69,6 +69,12 @@
 
 .channel-name {
     font-weight: 600;
+    text-decoration: none;
+    color: #181818;
+}
+
+.channel-name:hover {
+    color: #606060;
 }
 
 .channel-subs {
@@ -82,14 +88,13 @@
     padding: 12px;
     border-radius: 12px;
     font-size: 14px;
+    white-space: pre-wrap;
 }
 
 /* RIGHT SIDE */
 .video-secondary {
     flex: 1 1 32%;
 }
-
-
 
 .video-actions {
     display: flex;
@@ -160,11 +165,93 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    margin-right: 16px; /* 👈 space from text */
+    margin-right: 16px;
 }
 
 
 .subscribed-btn {
     background-color: #5c5c5c;
     color: #ffffff;
+}
+
+/* Playlist Dropdown */
+.playlist-menu-wrapper {
+    position: relative;
+}
+
+.playlist-dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 220px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.playlist-dropdown-header {
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #e0e0e0;
+    color: #181818;
+}
+
+.playlist-dropdown-item {
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #181818;
+}
+
+.playlist-dropdown-item:hover {
+    background: #f2f2f2;
+}
+
+.playlist-dropdown-empty {
+    padding: 16px 14px;
+    font-size: 13px;
+    color: #606060;
+    text-align: center;
+}
+
+/* More/Report Dropdown */
+.more-menu-wrapper {
+    position: relative;
+}
+
+.more-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 180px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.more-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    color: #181818;
+}
+
+.more-dropdown-item:hover {
+    background: #f2f2f2;
+}
+
+.more-dropdown-item mat-icon {
+    font-size: 20px;
+    color: #606060;
 }

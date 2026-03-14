@@ -32,6 +32,7 @@
     padding: 8px 0;
     font-size: 14px;
     outline: none;
+    font-family: Roboto, sans-serif;
 }
 
 .comment-input input:focus {
@@ -51,10 +52,20 @@
     gap: 12px;
 }
 
+.comment.reply {
+    margin-left: 40px;
+}
+
 .avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.avatar.small {
+    width: 28px;
+    height: 28px;
 }
 
 .comment-body {
@@ -83,6 +94,78 @@
 .comment-actions-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     font-size: 13px;
+}
+
+.reply-btn {
+    font-size: 13px;
+    font-weight: 600;
+    color: #606060;
+}
+
+/* Edit mode */
+.edit-mode {
+    margin-top: 8px;
+}
+
+.edit-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #065fd4;
+    padding: 8px 0;
+    font-size: 14px;
+    outline: none;
+    font-family: Roboto, sans-serif;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Reply input */
+.reply-input-area {
+    margin-top: 8px;
+}
+
+.reply-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    font-size: 14px;
+    outline: none;
+    font-family: Roboto, sans-serif;
+}
+
+.reply-input:focus {
+    border-bottom: 2px solid #065fd4;
+}
+
+.reply-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Replies toggle */
+.replies-toggle {
+    color: #065fd4;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.replies-list {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }

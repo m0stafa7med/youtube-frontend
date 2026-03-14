@@ -9,4 +9,10 @@ export interface VideoDto {
     likeCount: number;
     dislikeCount: number;
     viewCount: number;
+    createdAt: string;
+    duration: number;
+    category: string;
+    userId: string;
+    userFullName: string;
+    userPicture: string;
 }

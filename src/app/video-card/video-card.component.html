@@ -5,24 +5,31 @@
                 class="thumbnail"
                 [src]="video.thumbnailUrl"
                 alt="Thumbnail">
+        <span class="duration" *ngIf="video.duration">{{ video.duration | duration }}</span>
     </div>
 
     <mat-card-header class="card-header">
 
         <!-- Channel avatar -->
-        <img
-                mat-card-avatar
-                class="channel-avatar"
-                src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-                alt="Channel">
+        <a class="avatar-link" routerLink="/channel/{{ video.userId }}" (click)="$event.stopPropagation()">
+            <img
+                    mat-card-avatar
+                    class="channel-avatar"
+                    [src]="video.userPicture || 'assets/avatar.png'"
+                    alt="Channel">
+        </a>
 
         <div class="header-text">
             <mat-card-title class="title">
                 {{ video.title }}
             </mat-card-title>
 
-            <mat-card-subtitle>MrBeast</mat-card-subtitle>
-            <mat-card-subtitle>{{ video.viewCount }} views</mat-card-subtitle>
+            <mat-card-subtitle>
+                <a class="channel-link" routerLink="/channel/{{ video.userId }}" (click)="$event.stopPropagation()">
+                    {{ video.userFullName || 'Unknown' }}
+                </a>
+            </mat-card-subtitle>
+            <mat-card-subtitle>{{ video.viewCount }} views <span *ngIf="video.createdAt"> &bull; {{ video.createdAt | timeAgo }}</span></mat-card-subtitle>
         </div>
 
     </mat-card-header>

@@ -1,7 +1,7 @@
 <div class="comments-container">
     <!-- HEADER -->
     <div class="comments-header">
-        <span class="count">1,234 Comments</span>
+        <span class="count">{{ comments.length }} Comments</span>
     </div>
 
     <!-- ADD COMMENT -->
@@ -12,12 +12,14 @@
             <input
                     type="text"
                     placeholder="Add a comment..."
+                    [(ngModel)]="commentText"
                     (focus)="focused = true"
+                    (keyup.enter)="addComment()"
             />
 
             <div class="comment-actions" *ngIf="focused">
                 <button mat-button (click)="cancel()">Cancel</button>
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary" (click)="addComment()">
                     Comment
                 </button>
             </div>
@@ -26,28 +28,109 @@
 
     <!-- COMMENTS LIST -->
     <div class="comment" *ngFor="let comment of comments">
-        <img class="avatar" src="assets/avatar.png" />
+        <img class="avatar"
+             [src]="comment.authorPicture || 'assets/avatar.png'" />
 
         <div class="comment-body">
             <div class="comment-header">
-                <span class="username">{{ comment.user }}</span>
-                <span class="time">{{ comment.time }}</span>
+                <span class="username">{{ comment.authorFullName || 'Unknown' }}</span>
+                <span class="time">{{ comment.createdAt | timeAgo }}</span>
             </div>
 
-            <div class="comment-text">
-                {{ comment.text }}
+            <!-- Normal view -->
+            <div *ngIf="editingCommentId !== comment.id">
+                <div class="comment-text">
+                    {{ comment.commentText }}
+                </div>
+
+                <div class="comment-actions-row">
+                    <button mat-icon-button>
+                        <mat-icon>thumb_up</mat-icon>
+                    </button>
+
+                    <button mat-icon-button>
+                        <mat-icon>thumb_down</mat-icon>
+                    </button>
+
+                    <button mat-button class="reply-btn" (click)="replyToComment(comment)">
+                        Reply
+                    </button>
+
+                    <!-- Edit/Delete for own comments -->
+                    <button mat-icon-button
+                            *ngIf="comment.authorId === currentUserId"
+                            (click)="editComment(comment)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button
+                            *ngIf="comment.authorId === currentUserId"
+                            (click)="deleteComment(comment.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
             </div>
 
-            <div class="comment-actions-row">
-                <button mat-icon-button>
-                    <mat-icon>thumb_up</mat-icon>
-                </button>
-                <span>{{ comment.likes }}</span>
+            <!-- Edit mode -->
+            <div class="edit-mode" *ngIf="editingCommentId === comment.id">
+                <input type="text"
+                       class="edit-input"
+                       [(ngModel)]="editText"
+                       (keyup.enter)="saveEdit(comment)" />
+                <div class="edit-actions">
+                    <button mat-button (click)="cancelEdit()">Cancel</button>
+                    <button mat-raised-button color="primary" (click)="saveEdit(comment)">Save</button>
+                </div>
+            </div>
 
-                <button mat-icon-button>
-                    <mat-icon>thumb_down</mat-icon>
+            <!-- Reply input -->
+            <div class="reply-input-area" *ngIf="replyingToCommentId === comment.id">
+                <input type="text"
+                       class="reply-input"
+                       [(ngModel)]="replyText"
+                       placeholder="Add a reply..."
+                       (keyup.enter)="submitReply(comment)" />
+                <div class="reply-actions">
+                    <button mat-button (click)="cancelReply()">Cancel</button>
+                    <button mat-raised-button color="primary" (click)="submitReply(comment)">Reply</button>
+                </div>
+            </div>
+
+            <!-- Replies toggle -->
+            <div *ngIf="comment.replies && comment.replies.length > 0">
+                <button mat-button class="replies-toggle" (click)="toggleReplies(comment)">
+                    <mat-icon>{{ expandedReplies.has(comment.id) ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    {{ comment.replies.length }} replies
                 </button>
 
+                <!-- Nested replies -->
+                <div class="replies-list" *ngIf="expandedReplies.has(comment.id)">
+                    <div class="comment reply" *ngFor="let reply of comment.replies">
+                        <img class="avatar small"
+                             [src]="reply.authorPicture || 'assets/avatar.png'" />
+                        <div class="comment-body">
+                            <div class="comment-header">
+                                <span class="username">{{ reply.authorFullName || 'Unknown' }}</span>
+                                <span class="time">{{ reply.createdAt | timeAgo }}</span>
+                            </div>
+                            <div class="comment-text">
+                                {{ reply.commentText }}
+                            </div>
+                            <div class="comment-actions-row">
+                                <button mat-icon-button>
+                                    <mat-icon>thumb_up</mat-icon>
+                                </button>
+                                <button mat-icon-button>
+                                    <mat-icon>thumb_down</mat-icon>
+                                </button>
+                                <button mat-icon-button
+                                        *ngIf="reply.authorId === currentUserId"
+                                        (click)="deleteComment(reply.id)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

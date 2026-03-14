@@ -1,0 +1,43 @@
+<app-loading-spinner *ngIf="loading" message="Loading channel..."></app-loading-spinner>
+
+<div class="channel-container" *ngIf="!loading && user">
+    <!-- Channel Banner -->
+    <div class="channel-header">
+        <div class="channel-info">
+            <img class="channel-avatar"
+                 [src]="user.picture || 'assets/avatar.png'"
+                 [alt]="user.fullName">
+            <div class="channel-details">
+                <h1 class="channel-name">{{ user.fullName }}</h1>
+                <span class="subscriber-count">{{ user.subscriberCount }} subscribers</span>
+                <span class="video-count">{{ user.videoCount }} videos</span>
+            </div>
+        </div>
+        <div class="channel-actions">
+            <button mat-raised-button color="warn"
+                    *ngIf="!isSubscribed"
+                    (click)="subscribe()">
+                Subscribe
+            </button>
+            <button mat-raised-button class="subscribed-btn"
+                    *ngIf="isSubscribed"
+                    (click)="unsubscribe()">
+                Subscribed
+            </button>
+        </div>
+    </div>
+
+    <!-- Videos Section -->
+    <div class="channel-videos">
+        <h3>Videos</h3>
+        <div class="video-grid" *ngIf="videos.length > 0">
+            <app-video-card
+                    *ngFor="let video of videos"
+                    [video]="video">
+            </app-video-card>
+        </div>
+        <div class="no-videos" *ngIf="videos.length === 0">
+            <p>This channel hasn't uploaded any videos yet.</p>
+        </div>
+    </div>
+</div>

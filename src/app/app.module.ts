@@ -30,6 +30,7 @@ import {AuthConfigModule} from "./auth/auth-config.module";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCardModule} from "@angular/material/card";
 import {CommentsComponent} from "./comments/comments.component";
+import {TimeAgoPipe} from "./pipes/time-ago.pipe";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -61,7 +62,7 @@ import {CommentsComponent} from "./comments/comments.component";
         HeaderComponent,
         AuthConfigModule,
         MatDividerModule,
-        MatCardModule, CommentsComponent],
+        MatCardModule, CommentsComponent, TimeAgoPipe],
     providers: [provideHttpClient(withInterceptorsFromDi()),
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ] })

@@ -1,5 +1,103 @@
+h3 {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #181818;
+}
+
+.filters-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+}
+
+.sort-container label {
+    color: #606060;
+    font-weight: 500;
+}
+
+.sort-container select {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    background: white;
+    cursor: pointer;
+}
+
+.category-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    padding: 6px 14px;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    font-size: 13px;
+    font-family: Roboto, sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: #181818;
+}
+
+.chip:hover {
+    background: #e0e0e0;
+}
+
+.chip.active {
+    background: #181818;
+    color: white;
+    border-color: #181818;
+}
+
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
+}
+
+.no-videos {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+    color: #606060;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+}
+
+.load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    padding-bottom: 24px;
+}
+
+.load-more-btn {
+    padding: 10px 24px;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+}
+
+.load-more-btn:hover {
+    background: #e0e0e0;
 }

@@ -1,0 +1,26 @@
+<app-loading-spinner *ngIf="loading" message="Loading playlist..."></app-loading-spinner>
+
+<div class="playlist-container" *ngIf="!loading && playlist">
+    <div class="playlist-header">
+        <div class="playlist-info">
+            <h2>{{ playlist.name }}</h2>
+            <p class="playlist-description" *ngIf="playlist.description">{{ playlist.description }}</p>
+            <span class="playlist-meta">{{ videos.length }} videos</span>
+        </div>
+        <button mat-raised-button color="warn" (click)="deletePlaylist()">
+            <mat-icon>delete</mat-icon>
+            Delete Playlist
+        </button>
+    </div>
+
+    <div class="video-grid" *ngIf="videos.length > 0">
+        <app-video-card
+                *ngFor="let video of videos"
+                [video]="video">
+        </app-video-card>
+    </div>
+
+    <div class="no-videos" *ngIf="videos.length === 0">
+        <p>This playlist is empty.</p>
+    </div>
+</div>

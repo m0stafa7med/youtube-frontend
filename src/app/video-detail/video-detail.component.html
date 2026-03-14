@@ -14,7 +14,7 @@
             <div class="video-meta-left">
                 <span>{{ viewCount }} views</span>
                 <span class="dot"></span>
-                <span>Today</span>
+                <span>{{ createdAt | timeAgo }}</span>
             </div>
 
             <div class="video-actions">
@@ -33,15 +33,48 @@
                 </div>
 
                 <!-- SHARE -->
-                <button class="action-btn single">
+                <button class="action-btn single" (click)="shareVideo()">
                     <mat-icon>share</mat-icon>
                     <span>Share</span>
                 </button>
 
-                <!-- MORE -->
-                <button class="action-btn single icon-only">
-                    <mat-icon>more_horiz</mat-icon>
+                <!-- SAVE TO PLAYLIST -->
+                <div class="playlist-menu-wrapper">
+                    <button class="action-btn single" (click)="togglePlaylistMenu()">
+                        <mat-icon>playlist_add</mat-icon>
+                        <span>Save</span>
+                    </button>
+                    <div class="playlist-dropdown" *ngIf="showPlaylistMenu">
+                        <div class="playlist-dropdown-header">Save to playlist</div>
+                        <div class="playlist-dropdown-item"
+                             *ngFor="let playlist of userPlaylists"
+                             (click)="addToPlaylist(playlist.id)">
+                            {{ playlist.name }}
+                        </div>
+                        <div class="playlist-dropdown-empty" *ngIf="userPlaylists.length === 0">
+                            No playlists found
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DELETE (owner only) -->
+                <button class="action-btn single" *ngIf="isOwner" (click)="deleteVideo()">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
                 </button>
+
+                <!-- MORE / REPORT -->
+                <div class="more-menu-wrapper">
+                    <button class="action-btn single icon-only" (click)="showReportMenu = !showReportMenu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <div class="more-dropdown" *ngIf="showReportMenu">
+                        <button class="more-dropdown-item" (click)="reportVideo()">
+                            <mat-icon>flag</mat-icon>
+                            Report
+                        </button>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -51,14 +84,16 @@
         <!-- CHANNEL ROW -->
         <div class="channel-row">
             <div class="channel-info">
-                <img
-                        mat-card-avatar
-                        class="channel-avatar"
-                        src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-                        alt="Channel">
+                <a routerLink="/channel/{{ videoUserId }}">
+                    <img
+                            mat-card-avatar
+                            class="channel-avatar"
+                            [src]="userPicture || 'assets/avatar.png'"
+                            alt="Channel">
+                </a>
                 <div>
-                    <div class="channel-name">Mostafa Darwesh</div>
-                    <div class="channel-subs">1M subscribers</div>
+                    <a class="channel-name" routerLink="/channel/{{ videoUserId }}">{{ userFullName || 'Unknown' }}</a>
+                    <div class="channel-subs">{{ subscriberCount }} subscribers</div>
                 </div>
             </div>
 
@@ -78,7 +113,7 @@
 
         <!-- DESCRIPTION -->
         <div class="video-description">
-            This video has a description
+            {{ videoDescription }}
         </div>
 
         <mat-divider></mat-divider>
