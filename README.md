@@ -1,28 +1,88 @@
-# YoutubeCloneUi
+# 🎨 YouTube Clone — Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+Angular single-page application for the YouTube Clone platform. Features a YouTube-inspired UI with dark/light mode, video player, comments, search, and responsive design.
 
-## Development server
+## 🛠️ Tech Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular 17** — Component-based SPA framework
+- **Angular Material** — UI component library
+- **angular-auth-oidc-client** — Auth0 OIDC integration
+- **CSS Custom Properties** — Dynamic dark/light theming
+- **Nginx** — Production static file serving + API proxy
 
-## Code scaffolding
+## 📁 Project Structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+src/app/
+├── auth/                    # Auth0 configuration module
+├── callback/                # OAuth callback handler
+├── header/                  # Top navigation bar + theme toggle
+├── sidebar/                 # Side navigation (Home, Trending, etc.)
+├── home/                    # Layout wrapper with sidebar
+├── featured/                # Main video feed with categories & sorting
+├── video-card/              # Video thumbnail card component
+├── video-detail/            # Video player page with details
+├── video-player/            # Video player wrapper
+├── comments/                # Comments section with replies
+├── upload-video/            # Video upload page (auth required)
+├── save-video-details/      # Video metadata editor (auth required)
+├── search-results/          # Search results page
+├── channel/                 # User channel/profile page
+├── trending/                # Trending videos page
+├── subscriptions/           # Subscribed channels page
+├── history/                 # Watch history page
+├── liked-videos/            # Liked videos page
+├── playlist/                # Single playlist view
+├── playlist-list/           # All playlists page
+├── loading-spinner/         # Loading indicator
+├── service/
+│   ├── video.service.ts     # Video API calls
+│   ├── user.service.ts      # User API calls
+│   └── theme.service.ts     # Dark/light mode with localStorage
+├── dto/                     # TypeScript interfaces
+├── pipes/                   # Custom pipes (timeAgo, etc.)
+└── environments/
+    ├── environment.ts       # Dev config (localhost:8080)
+    └── environment.prod.ts  # Prod config (youtube.mostafadarwesh.com)
+```
 
-## Build
+## ✨ Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **🌗 Dark/Light Mode** — Toggle with localStorage persistence, YouTube-matching colors
+- **🔍 Search** — Real-time search by title and description
+- **📂 Categories** — Filter by Music, Gaming, Education, Entertainment, etc.
+- **📊 Sorting** — Sort by newest, most viewed, most liked
+- **🔔 Notifications** — Bell icon with unread badge and dropdown
+- **🔒 Auth Guards** — Upload routes protected, login required
+- **📱 Responsive** — Adapts to different screen sizes
 
-## Running unit tests
+## 🎨 Theming
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+CSS variables in `styles.css` power the entire theme system:
 
-## Running end-to-end tests
+```css
+:root {                          /* Light mode */
+    --bg-primary: #ffffff;
+    --text-primary: #181818;
+    /* ... */
+}
+[data-theme="dark"] {            /* Dark mode */
+    --bg-primary: #0f0f0f;
+    --text-primary: #f1f1f1;
+    /* ... */
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🐳 Docker
 
-## Further help
+Multi-stage build: Node builds the Angular app, then Nginx serves the static files and proxies `/api` to the backend.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# youtube-frontend
+## 🏃 Running Locally
+
+```bash
+# Requires Node.js 20+
+npm install
+ng serve
+```
+
+Open `http://localhost:4200` — requires backend running on `http://localhost:8080`
