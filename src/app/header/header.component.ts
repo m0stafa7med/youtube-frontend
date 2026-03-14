@@ -11,6 +11,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {NotificationService} from "../service/notification.service";
 import {NotificationDto} from "../dto/notification-dto";
 import {TimeAgoPipe} from "../pipes/time-ago.pipe";
+import {ThemeService} from "../service/theme.service";
 
 @Component({
     selector: 'app-header',
@@ -39,11 +40,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     unreadCount: number = 0;
     notifications: NotificationDto[] = [];
     showNotifications: boolean = false;
+    isDarkMode: boolean = false;
     private pollInterval: any;
 
     constructor(private oidcSecurityService: OidcSecurityService,
                 private router: Router,
-                private notificationService: NotificationService) {
+                private notificationService: NotificationService,
+                private themeService: ThemeService) {
+        this.isDarkMode = this.themeService.isDarkMode();
     }
 
     ngOnInit(): void {
@@ -111,6 +115,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if (notification.videoId) {
             this.router.navigate(['/video-details', notification.videoId]);
         }
+    }
+
+    toggleTheme(): void {
+        this.themeService.toggleTheme();
+        this.isDarkMode = this.themeService.isDarkMode();
     }
 
     login() {

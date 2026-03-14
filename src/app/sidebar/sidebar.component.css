@@ -1,8 +1,26 @@
-.mat-mdc-list-item {
-    align-items: center !important;
+mat-sidenav {
+    background-color: var(--bg-primary) !important;
+    border-right: 1px solid var(--border-color) !important;
 }
 
+mat-nav-list {
+    background-color: var(--bg-primary) !important;
+}
+
+.mat-mdc-list-item {
+    align-items: center !important;
+    color: var(--text-primary) !important;
+}
+
+.mat-mdc-list-item:hover {
+    background-color: var(--hover-bg) !important;
+}
 
 .mat-mdc-list-item mat-icon {
     margin-right: 16px;
+    color: var(--text-primary) !important;
+}
+
+.mat-mdc-list-item span {
+    color: var(--text-primary) !important;
 }

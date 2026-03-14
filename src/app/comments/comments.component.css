@@ -28,7 +28,7 @@
 .comment-input input {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--divider-color);
     padding: 8px 0;
     font-size: 14px;
     outline: none;
@@ -36,7 +36,7 @@
 }
 
 .comment-input input:focus {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid var(--input-focus-border);
 }
 
 .comment-actions {
@@ -83,7 +83,7 @@
 }
 
 .time {
-    color: #606060;
+    color: var(--text-secondary);
 }
 
 .comment-text {
@@ -101,7 +101,7 @@
 .reply-btn {
     font-size: 13px;
     font-weight: 600;
-    color: #606060;
+    color: var(--text-secondary);
 }
 
 /* Edit mode */
@@ -134,7 +134,7 @@
 .reply-input {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--divider-color);
     padding: 8px 0;
     font-size: 14px;
     outline: none;

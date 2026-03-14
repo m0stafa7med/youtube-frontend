@@ -3,7 +3,7 @@ h3 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 16px;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .filters-row {
@@ -23,17 +23,18 @@ h3 {
 }
 
 .sort-container label {
-    color: #606060;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .sort-container select {
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--divider-color);
     border-radius: 4px;
     font-size: 14px;
     font-family: Roboto, sans-serif;
-    background: white;
+    background: var(--bg-card);
+    color: var(--text-primary);
     cursor: pointer;
 }
 
@@ -46,23 +47,23 @@ h3 {
 .chip {
     padding: 6px 14px;
     border-radius: 16px;
-    border: 1px solid #ccc;
-    background: #f2f2f2;
+    border: 1px solid var(--divider-color);
+    background: var(--chip-bg);
     font-size: 13px;
     font-family: Roboto, sans-serif;
     cursor: pointer;
     transition: all 0.15s;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .chip:hover {
-    background: #e0e0e0;
+    background: var(--border-color);
 }
 
 .chip.active {
-    background: #181818;
-    color: white;
-    border-color: #181818;
+    background: var(--chip-active-bg);
+    color: var(--chip-active-text);
+    border-color: var(--chip-active-bg);
 }
 
 .video-grid {
@@ -75,7 +76,7 @@ h3 {
     display: flex;
     justify-content: center;
     padding: 60px;
-    color: #606060;
+    color: var(--text-secondary);
     font-size: 14px;
     font-family: Roboto, sans-serif;
 }
@@ -89,7 +90,8 @@ h3 {
 
 .load-more-btn {
     padding: 10px 24px;
-    background: #f2f2f2;
+    background: var(--action-bg);
+    color: var(--text-primary);
     border: none;
     border-radius: 20px;
     font-size: 14px;
@@ -99,5 +101,5 @@ h3 {
 }
 
 .load-more-btn:hover {
-    background: #e0e0e0;
+    background: var(--border-color);
 }

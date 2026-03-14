@@ -18,6 +18,11 @@
 
         <span class="example-spacer"></span>
 
+        <!-- THEME TOGGLE -->
+        <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme">
+            <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+
         <!-- NOTIFICATION BELL -->
         <div class="notification-wrapper" *ngIf="isAuthenticated">
             <button mat-icon-button (click)="toggleNotifications()" aria-label="Notifications">
@@ -57,7 +62,7 @@
         </div>
 
         <!-- UPLOAD VIDEO -->
-        <button
+        <button *ngIf="isAuthenticated"
                 mat-icon-button
                 routerLink="/upload-video"
                 aria-label="Upload video"
@@ -74,7 +79,7 @@
             <button mat-menu-item (click)="logOff()">Logout</button>
         </mat-menu>
         <ng-template #noAuth>
-            <button mat-raised-button (click)="login()">Login</button>
+            <button mat-raised-button class="login-btn" (click)="login()">Login</button>
         </ng-template>
     </mat-toolbar-row>
 </mat-toolbar>

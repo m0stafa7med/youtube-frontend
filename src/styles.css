@@ -1,4 +1,151 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.css";
+
+/* Theme Variables */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --bg-card: #ffffff;
+    --bg-input: #f2f2f2;
+    --text-primary: #181818;
+    --text-secondary: #606060;
+    --text-muted: #909090;
+    --border-color: #e0e0e0;
+    --hover-bg: #f2f2f2;
+    --header-bg: #ffffff;
+    --header-text: #181818;
+    --header-search-bg: #f8f8f8;
+    --header-search-border: #d6d6d6;
+    --header-search-btn-bg: #f8f8f8;
+    --header-icon-color: #606060;
+    --chip-bg: #f2f2f2;
+    --chip-active-bg: #181818;
+    --chip-active-text: #ffffff;
+    --dropdown-bg: #ffffff;
+    --unread-bg: #e8f0fe;
+    --unread-hover-bg: #d2e3fc;
+    --input-focus-border: #000000;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --description-bg: #f2f2f2;
+    --action-bg: #f2f2f2;
+    --divider-color: #cccccc;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #0f0f0f;
+    --bg-card: #212121;
+    --bg-input: #303030;
+    --text-primary: #f1f1f1;
+    --text-secondary: #aaaaaa;
+    --text-muted: #717171;
+    --border-color: #303030;
+    --hover-bg: #272727;
+    --header-bg: #0f0f0f;
+    --header-text: #f1f1f1;
+    --header-search-bg: #121212;
+    --header-search-border: #303030;
+    --header-search-btn-bg: #272727;
+    --header-icon-color: #f1f1f1;
+    --chip-bg: #272727;
+    --chip-active-bg: #f1f1f1;
+    --chip-active-text: #0f0f0f;
+    --dropdown-bg: #212121;
+    --unread-bg: #263850;
+    --unread-hover-bg: #2d4a6f;
+    --input-focus-border: #f1f1f1;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --description-bg: #272727;
+    --action-bg: #272727;
+    --divider-color: #404040;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: var(--bg-secondary); color: var(--text-primary); }
+
+/* Angular Material overrides for theme support */
+.mat-sidenav-container, .mat-drawer-container {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+.mat-sidenav, .mat-drawer {
+    background-color: var(--bg-primary) !important;
+    border-right-color: var(--border-color) !important;
+}
+
+.mat-mdc-card {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+.mat-mdc-list-item {
+    color: var(--text-primary) !important;
+}
+
+.mat-mdc-list-item mat-icon {
+    color: var(--text-primary) !important;
+}
+
+.mat-mdc-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+    background-color: var(--action-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.mat-mdc-form-field {
+    color: var(--text-primary) !important;
+}
+
+.mat-divider {
+    border-top-color: var(--border-color) !important;
+}
+
+/* Global form element theming */
+select, input, textarea {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--divider-color) !important;
+}
+
+select option {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* Material button overrides */
+.mat-mdc-button, .mat-mdc-icon-button {
+    color: var(--text-primary) !important;
+}
+
+/* Material snackbar */
+.mat-mdc-snack-bar-container {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Material menu */
+.mat-mdc-menu-panel {
+    background-color: var(--dropdown-bg) !important;
+}
+
+.mat-mdc-menu-item {
+    color: var(--text-primary) !important;
+}
+
+/* Scrollbar for dark mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #0f0f0f;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

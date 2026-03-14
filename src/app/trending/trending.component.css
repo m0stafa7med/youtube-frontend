@@ -7,7 +7,7 @@ h3 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 20px;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .video-grid {
@@ -20,7 +20,7 @@ h3 {
     display: flex;
     justify-content: center;
     padding: 60px;
-    color: #606060;
+    color: var(--text-secondary);
     font-size: 14px;
     font-family: Roboto, sans-serif;
 }

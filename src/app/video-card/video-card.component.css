@@ -65,7 +65,7 @@
 }
 
 .channel-link:hover {
-    color: #181818;
+    color: var(--text-primary);
 }
 
 /* Text wrapper */

@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 24px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 24px;
 }
 
@@ -36,14 +36,14 @@
     font-size: 24px;
     font-weight: 600;
     font-family: Roboto, sans-serif;
-    color: #181818;
+    color: var(--text-primary);
     margin: 0;
 }
 
 .subscriber-count,
 .video-count {
     font-size: 14px;
-    color: #606060;
+    color: var(--text-secondary);
     font-family: Roboto, sans-serif;
 }
 
@@ -62,7 +62,7 @@
     font-weight: 500;
     margin-bottom: 16px;
     font-family: Roboto, sans-serif;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .video-grid {
@@ -75,7 +75,7 @@
     display: flex;
     justify-content: center;
     padding: 40px;
-    color: #606060;
+    color: var(--text-secondary);
     font-size: 14px;
     font-family: Roboto, sans-serif;
 }

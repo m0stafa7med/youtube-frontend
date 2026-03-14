@@ -30,14 +30,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #606060;
+    color: var(--text-secondary);
     font-size: 14px;
 }
 
 .dot {
     width: 4px;
     height: 4px;
-    background: #606060;
+    background: var(--text-secondary);
     border-radius: 50%;
 }
 
@@ -70,21 +70,21 @@
 .channel-name {
     font-weight: 600;
     text-decoration: none;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .channel-name:hover {
-    color: #606060;
+    color: var(--text-secondary);
 }
 
 .channel-subs {
     font-size: 13px;
-    color: #606060;
+    color: var(--text-secondary);
 }
 
 /* DESCRIPTION */
 .video-description {
-    background: #f2f2f2;
+    background: var(--description-bg);
     padding: 12px;
     border-radius: 12px;
     font-size: 14px;
@@ -106,7 +106,7 @@
 .action-group {
     display: flex;
     align-items: center;
-    background: #f2f2f2;
+    background: var(--action-bg);
     border-radius: 20px;
     overflow: hidden;
 }
@@ -119,7 +119,7 @@
 .divider {
     width: 1px;
     height: 20px;
-    background: #ccc;
+    background: var(--divider-color);
 }
 
 /* BUTTON BASE */
@@ -136,7 +136,7 @@
 
 /* SINGLE BUTTON */
 .action-btn.single {
-    background: #f2f2f2;
+    background: var(--action-bg);
     border-radius: 20px;
     padding: 6px 14px;
 }
@@ -184,9 +184,9 @@
     top: 40px;
     left: 0;
     width: 220px;
-    background: white;
+    background: var(--dropdown-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px var(--shadow-color);
     z-index: 100;
     overflow: hidden;
 }
@@ -195,25 +195,25 @@
     padding: 10px 14px;
     font-size: 14px;
     font-weight: 600;
-    border-bottom: 1px solid #e0e0e0;
-    color: #181818;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
 }
 
 .playlist-dropdown-item {
     padding: 10px 14px;
     font-size: 14px;
     cursor: pointer;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .playlist-dropdown-item:hover {
-    background: #f2f2f2;
+    background: var(--hover-bg);
 }
 
 .playlist-dropdown-empty {
     padding: 16px 14px;
     font-size: 13px;
-    color: #606060;
+    color: var(--text-secondary);
     text-align: center;
 }
 
@@ -227,9 +227,9 @@
     top: 40px;
     right: 0;
     width: 180px;
-    background: white;
+    background: var(--dropdown-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px var(--shadow-color);
     z-index: 100;
     overflow: hidden;
 }
@@ -244,14 +244,14 @@
     background: none;
     cursor: pointer;
     width: 100%;
-    color: #181818;
+    color: var(--text-primary);
 }
 
 .more-dropdown-item:hover {
-    background: #f2f2f2;
+    background: var(--hover-bg);
 }
 
 .more-dropdown-item mat-icon {
     font-size: 20px;
-    color: #606060;
+    color: var(--text-secondary);
 }
