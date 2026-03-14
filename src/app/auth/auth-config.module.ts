@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {AuthModule} from 'angular-auth-oidc-client';
+import {environment} from '../../environments/environment';
 
+const apiBase = environment.apiUrl.replace('/api', '/');
 
 @NgModule({
     imports: [AuthModule.forRoot({
@@ -12,9 +14,9 @@ import {AuthModule} from 'angular-auth-oidc-client';
             responseType: 'code',
             silentRenew: true,
             useRefreshToken: true,
-            secureRoutes: ['http://localhost:8080/'],
+            secureRoutes: [apiBase],
             customParamsAuthRequest: {
-                audience: 'http://localhost:8080'
+                audience: apiBase
             }
         }
     })],
