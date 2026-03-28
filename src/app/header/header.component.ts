@@ -123,7 +123,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     login() {
+        console.log('Login clicked, attempting authorize...');
         this.oidcSecurityService.authorize();
+        console.log('authorize() called');
     }
 
     logOff() {

@@ -18,8 +18,13 @@ export class AppComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated }) => {
-      console.log('app is authenticated' , isAuthenticated);
+    this.oidcSecurityService.checkAuth().subscribe({
+      next: ({ isAuthenticated }) => {
+        console.log('app is authenticated', isAuthenticated);
+      },
+      error: (err) => {
+        console.log('auth check completed with no session', err);
+      }
     });
   }
 
