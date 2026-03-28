@@ -1,8 +1,30 @@
-<h3>History Videos</h3>
+<div class="history-container">
+    <h3 class="page-title">Watch History</h3>
 
-<div class="video-grid">
-    <app-video-card
-            *ngFor="let historyVideo of historyVideos"
-            [video]="historyVideo">
-    </app-video-card>
+    <!-- Not logged in -->
+    <div class="empty-state" *ngIf="!isAuthenticated && !isLoading">
+        <mat-icon class="empty-icon">history</mat-icon>
+        <p class="empty-title">Keep track of what you watch</p>
+        <p class="empty-subtitle">Sign in to access videos you've watched</p>
+    </div>
+
+    <!-- Logged in but no history -->
+    <div class="empty-state" *ngIf="isAuthenticated && !isLoading && historyVideos.length === 0">
+        <mat-icon class="empty-icon">history</mat-icon>
+        <p class="empty-title">No watch history yet</p>
+        <p class="empty-subtitle">Videos you watch will show up here</p>
+    </div>
+
+    <!-- Loading -->
+    <div class="empty-state" *ngIf="isLoading">
+        <p class="empty-subtitle">Loading...</p>
+    </div>
+
+    <!-- Video grid -->
+    <div class="video-grid" *ngIf="!isLoading && historyVideos.length > 0">
+        <app-video-card
+                *ngFor="let historyVideo of historyVideos"
+                [video]="historyVideo">
+        </app-video-card>
+    </div>
 </div>

@@ -73,4 +73,8 @@ export class VideoService {
     deleteVideo(videoId: string): Observable<any> {
         return this.httpClient.delete<any>(`${environment.apiUrl}/videos/${videoId}`);
     }
+
+    getHistory(): Observable<VideoDto[]> {
+        return this.httpClient.get<VideoDto[]>(`${environment.apiUrl}/videos/history`);
+    }
 }

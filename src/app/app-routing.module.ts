@@ -15,6 +15,7 @@ import {ChannelComponent} from "./channel/channel.component";
 import {TrendingComponent} from "./trending/trending.component";
 import {PlaylistListComponent} from "./playlist-list/playlist-list.component";
 import {PlaylistComponent} from "./playlist/playlist.component";
+import {NotFoundComponent} from "./not-found/not-found.component";
 
 const routes: Routes = [
     {
@@ -37,7 +38,8 @@ const routes: Routes = [
     { path: 'callback', component: CallbackComponent },
     { path: 'upload-video', component: UploadVideoComponent, canActivate: [AutoLoginPartialRoutesGuard] },
     { path: 'save-video-details/:videoId', component: SaveVideoDetailsComponent, canActivate: [AutoLoginPartialRoutesGuard] },
-    { path: 'video-details/:videoId', component: VideoDetailComponent }
+    { path: 'video-details/:videoId', component: VideoDetailComponent },
+    { path: '**', component: NotFoundComponent }
 ];
 
 
