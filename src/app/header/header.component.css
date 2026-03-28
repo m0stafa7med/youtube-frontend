@@ -193,3 +193,15 @@ mat-form-field .mat-form-field-underline {
     color: var(--text-secondary);
     font-size: 14px;
 }
+
+/* User Avatar */
+.user-avatar-btn {
+    padding: 0 !important;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}

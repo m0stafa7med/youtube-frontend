@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    background-color: var(--bg-card) !important;
 }
 
 /* Thumbnail */
@@ -96,9 +97,23 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
+    color: var(--text-primary) !important;
 
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* Subtitle (username, views, time) */
+:host ::ng-deep .mat-mdc-card-subtitle {
+    color: var(--text-secondary) !important;
+}
+
+.channel-link {
+    color: var(--text-secondary) !important;
+}
+
+.channel-link:hover {
+    color: var(--text-primary) !important;
 }

@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     notifications: NotificationDto[] = [];
     showNotifications: boolean = false;
     isDarkMode: boolean = false;
+    userPicture: string = '';
     private pollInterval: any;
 
     constructor(private oidcSecurityService: OidcSecurityService,
@@ -58,6 +59,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 this.pollInterval = setInterval(() => {
                     this.loadUnreadCount();
                 }, 30000);
+                this.oidcSecurityService.userData$.subscribe(({userData}) => {
+                    if (userData) {
+                        this.userPicture = userData.picture || '';
+                    }
+                });
             }
         });
     }
