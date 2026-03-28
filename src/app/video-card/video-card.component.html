@@ -1,10 +1,13 @@
 <mat-card class="video-card" routerLink="/video-details/{{ video.id }}">
 
     <div class="thumbnail-wrapper">
-        <img
+        <img *ngIf="video.thumbnailUrl"
                 class="thumbnail"
                 [src]="video.thumbnailUrl"
                 alt="Thumbnail">
+        <div *ngIf="!video.thumbnailUrl" class="thumbnail-placeholder">
+            <mat-icon>play_circle_outline</mat-icon>
+        </div>
         <span class="duration" *ngIf="video.duration">{{ video.duration | duration }}</span>
     </div>
 
