@@ -8,7 +8,10 @@ const apiBase = environment.apiUrl.replace('/api', '/');
     imports: [AuthModule.forRoot({
         config: {
             authority: 'https://mostafa-youtube-clone.us.auth0.com',
-            redirectUrl: window.location.origin,
+            redirectUrl: window.location.origin + '/callback',
+            postLogoutRedirectUri: window.location.origin,
+            unauthorizedRoute: '/featured',
+            forbiddenRoute: '/featured',
             clientId: 'Qiv390FI000Ufojn44RHF9WCSBuBpu3i',
             scope: 'openid profile offline_access email',
             responseType: 'code',
