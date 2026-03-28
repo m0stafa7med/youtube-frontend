@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {environment} from "../../environments/environment";
 import {UserDto} from "../dto/user-dto";
 import {VideoDto} from "../dto/video-dto";
@@ -22,11 +22,11 @@ export class UserService {
         return this.httpClient.post<boolean>(`${environment.apiUrl}/user/unSubscribe/${userId}`, null);
     }
 
-    registerUser() {
-        this.httpClient.get(`${environment.apiUrl}/user/register`, {responseType: "text"})
-            .subscribe(data => {
+    registerUser(): Observable<string> {
+        return this.httpClient.get(`${environment.apiUrl}/user/register`, {responseType: "text"})
+            .pipe(tap(data => {
                 this.userId = data;
-            })
+            }));
     }
 
     getUserId(): string {

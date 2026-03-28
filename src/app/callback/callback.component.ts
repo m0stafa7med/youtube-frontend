@@ -20,9 +20,17 @@ export class CallbackComponent implements OnInit {
   ngOnInit(): void {
     this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated }) => {
       if (isAuthenticated) {
-        this.userService.registerUser();
+        this.userService.registerUser().subscribe({
+          next: () => {
+            this.router.navigateByUrl('/featured');
+          },
+          error: () => {
+            this.router.navigateByUrl('/featured');
+          }
+        });
+      } else {
+        this.router.navigateByUrl('/featured');
       }
-      this.router.navigateByUrl('/featured');
     });
   }
 }
