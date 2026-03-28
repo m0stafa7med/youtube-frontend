@@ -79,8 +79,8 @@ export class SaveVideoDetailsComponent {
 
     onUpload() {
         this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
-            .subscribe(() => {
-                // show an upload success notification.
+            .subscribe((data) => {
+                this.thumbnailUrl = data;
                 this.matSnackBar.open("Thumbnail Upload Successful", "OK");
             })
     }
