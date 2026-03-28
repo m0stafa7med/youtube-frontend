@@ -6,7 +6,7 @@
 
     <!-- ADD COMMENT -->
     <div class="add-comment">
-        <img class="avatar" src="assets/avatar.png" />
+        <img class="avatar" src="assets/avatar.svg" />
 
         <div class="comment-input">
             <input
@@ -29,7 +29,7 @@
     <!-- COMMENTS LIST -->
     <div class="comment" *ngFor="let comment of comments">
         <img class="avatar"
-             [src]="comment.authorPicture || 'assets/avatar.png'" />
+             [src]="comment.authorPicture || 'assets/avatar.svg'" />
 
         <div class="comment-body">
             <div class="comment-header">
@@ -106,7 +106,7 @@
                 <div class="replies-list" *ngIf="expandedReplies.has(comment.id)">
                     <div class="comment reply" *ngFor="let reply of comment.replies">
                         <img class="avatar small"
-                             [src]="reply.authorPicture || 'assets/avatar.png'" />
+                             [src]="reply.authorPicture || 'assets/avatar.svg'" />
                         <div class="comment-body">
                             <div class="comment-header">
                                 <span class="username">{{ reply.authorFullName || 'Unknown' }}</span>

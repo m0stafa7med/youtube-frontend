@@ -132,6 +132,7 @@
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
+    color: var(--text-primary);
 }
 
 /* SINGLE BUTTON */
@@ -152,12 +153,23 @@
 
 /* HOVER */
 .action-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--hover-bg);
 }
 
 /* ICON SIZE */
 .action-btn mat-icon {
     font-size: 20px;
+    color: var(--text-primary);
+}
+
+/* Video title */
+.video-title {
+    color: var(--text-primary);
+}
+
+/* Video description */
+.video-description {
+    color: var(--text-primary);
 }
 
 

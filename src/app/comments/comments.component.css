@@ -13,6 +13,7 @@
 
 .count {
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 /* ADD COMMENT */
@@ -33,6 +34,8 @@
     font-size: 14px;
     outline: none;
     font-family: Roboto, sans-serif;
+    background: transparent !important;
+    color: var(--text-primary) !important;
 }
 
 .comment-input input:focus {
@@ -80,6 +83,7 @@
 
 .username {
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .time {
@@ -89,6 +93,7 @@
 .comment-text {
     margin: 4px 0;
     font-size: 14px;
+    color: var(--text-primary);
 }
 
 .comment-actions-row {
@@ -117,6 +122,8 @@
     font-size: 14px;
     outline: none;
     font-family: Roboto, sans-serif;
+    background: transparent !important;
+    color: var(--text-primary) !important;
 }
 
 .edit-actions {
@@ -139,6 +146,8 @@
     font-size: 14px;
     outline: none;
     font-family: Roboto, sans-serif;
+    background: transparent !important;
+    color: var(--text-primary) !important;
 }
 
 .reply-input:focus {
