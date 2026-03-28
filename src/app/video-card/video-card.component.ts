@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatCard, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
+import {MatIcon} from "@angular/material/icon";
 import {RouterLink} from "@angular/router";
 import {VideoDto} from "../dto/video-dto";
 import {NgIf} from "@angular/common";
@@ -13,6 +14,7 @@ import {DurationPipe} from "../pipes/duration.pipe";
         MatCardHeader,
         MatCardTitle,
         MatCardSubtitle,
+        MatIcon,
         RouterLink,
         NgIf,
         TimeAgoPipe,
