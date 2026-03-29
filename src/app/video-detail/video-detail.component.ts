@@ -68,6 +68,15 @@ export class VideoDetailComponent implements OnInit {
                 this.userService.getUserProfile(data.userId).subscribe(user => {
                     this.subscriberCount = user.subscriberCount;
                 });
+                if (this.currentUserId && this.currentUserId !== data.userId) {
+                    this.userService.isSubscribed(data.userId).subscribe({
+                        next: (subscribed) => {
+                            this.showSubscribeButton = !subscribed;
+                            this.showUnSubscribeButton = subscribed;
+                        },
+                        error: () => {}
+                    });
+                }
             }
         });
     }

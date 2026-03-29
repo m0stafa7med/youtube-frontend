@@ -18,6 +18,10 @@ export class UserService {
         return this.httpClient.post<boolean>(`${environment.apiUrl}/user/subscribe/${userId}`, null);
     }
 
+    isSubscribed(userId: string): Observable<boolean> {
+        return this.httpClient.get<boolean>(`${environment.apiUrl}/user/subscribe/${userId}/status`);
+    }
+
     unSubscribeUser(userId: string): Observable<boolean> {
         return this.httpClient.post<boolean>(`${environment.apiUrl}/user/unSubscribe/${userId}`, null);
     }
