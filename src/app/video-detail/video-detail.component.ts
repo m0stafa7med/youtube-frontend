@@ -7,6 +7,7 @@ import {PlaylistService} from "../service/playlist.service";
 import {ReportService} from "../service/report.service";
 import {PlaylistDto} from "../dto/playlist-dto";
 import {ReportDto} from "../dto/report-dto";
+import {OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
     selector: 'app-video-detail',
@@ -39,6 +40,7 @@ export class VideoDetailComponent implements OnInit {
     showReportMenu: boolean = false;
     showPlaylistMenu: boolean = false;
     userPlaylists: PlaylistDto[] = [];
+    isAuthenticated: boolean = false;
 
     constructor(private activatedRoute: ActivatedRoute,
                 private videoService: VideoService,
@@ -46,9 +48,19 @@ export class VideoDetailComponent implements OnInit {
                 private matSnackBar: MatSnackBar,
                 private router: Router,
                 private playlistService: PlaylistService,
-                private reportService: ReportService) {
+                private reportService: ReportService,
+                private oidcSecurityService: OidcSecurityService) {
         this.videoId = this.activatedRoute.snapshot.params['videoId'];
         this.currentUserId = this.userService.getUserId();
+
+        // Check auth state first, then load video
+        this.oidcSecurityService.isAuthenticated$.subscribe(({isAuthenticated}) => {
+            this.isAuthenticated = isAuthenticated;
+            this.loadVideo();
+        });
+    }
+
+    private loadVideo() {
         this.videoService.getVideo(this.videoId).subscribe(data => {
             this.videoUrl = data.videoUrl;
             this.videoTitle = data.title;
@@ -68,7 +80,8 @@ export class VideoDetailComponent implements OnInit {
                 this.userService.getUserProfile(data.userId).subscribe(user => {
                     this.subscriberCount = user.subscriberCount;
                 });
-                if (this.currentUserId && this.currentUserId !== data.userId) {
+                // Use isAuthenticated instead of currentUserId to check subscribe status
+                if (this.isAuthenticated && data.userId) {
                     this.userService.isSubscribed(data.userId).subscribe({
                         next: (subscribed) => {
                             this.showSubscribeButton = !subscribed;
