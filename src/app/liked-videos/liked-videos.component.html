@@ -1,1 +1,30 @@
-<p>liked-videos works!</p>
+<div class="liked-container">
+    <h3 class="page-title">Liked Videos</h3>
+
+    <!-- Not logged in -->
+    <div class="empty-state" *ngIf="!isAuthenticated && !isLoading">
+        <mat-icon class="empty-icon">thumb_up</mat-icon>
+        <p class="empty-title">Sign in to access videos you've liked</p>
+        <p class="empty-subtitle">Your liked videos will appear here</p>
+    </div>
+
+    <!-- Logged in but no liked videos -->
+    <div class="empty-state" *ngIf="isAuthenticated && !isLoading && likedVideos.length === 0">
+        <mat-icon class="empty-icon">thumb_up</mat-icon>
+        <p class="empty-title">No liked videos yet</p>
+        <p class="empty-subtitle">Videos you like will show up here</p>
+    </div>
+
+    <!-- Loading -->
+    <div class="empty-state" *ngIf="isLoading">
+        <p class="empty-subtitle">Loading...</p>
+    </div>
+
+    <!-- Video grid -->
+    <div class="video-grid" *ngIf="!isLoading && likedVideos.length > 0">
+        <app-video-card
+                *ngFor="let video of likedVideos"
+                [video]="video">
+        </app-video-card>
+    </div>
+</div>

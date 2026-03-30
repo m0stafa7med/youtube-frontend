@@ -77,4 +77,12 @@ export class VideoService {
     getHistory(): Observable<VideoDto[]> {
         return this.httpClient.get<VideoDto[]>(`${environment.apiUrl}/videos/history`);
     }
+
+    getLikedVideos(): Observable<VideoDto[]> {
+        return this.httpClient.get<VideoDto[]>(`${environment.apiUrl}/videos/liked`);
+    }
+
+    getSubscriptionVideos(): Observable<VideoDto[]> {
+        return this.httpClient.get<VideoDto[]>(`${environment.apiUrl}/videos/subscriptions`);
+    }
 }

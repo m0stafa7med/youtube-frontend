@@ -1,1 +1,30 @@
-<p>subscriptions works!</p>
+<div class="subscriptions-container">
+    <h3 class="page-title">Subscriptions</h3>
+
+    <!-- Not logged in -->
+    <div class="empty-state" *ngIf="!isAuthenticated && !isLoading">
+        <mat-icon class="empty-icon">subscriptions</mat-icon>
+        <p class="empty-title">Sign in to see videos from channels you subscribe to</p>
+        <p class="empty-subtitle">Your subscription feed will appear here</p>
+    </div>
+
+    <!-- Logged in but no subscriptions -->
+    <div class="empty-state" *ngIf="isAuthenticated && !isLoading && subscriptionVideos.length === 0">
+        <mat-icon class="empty-icon">subscriptions</mat-icon>
+        <p class="empty-title">No subscription videos yet</p>
+        <p class="empty-subtitle">Subscribe to channels to see their latest videos here</p>
+    </div>
+
+    <!-- Loading -->
+    <div class="empty-state" *ngIf="isLoading">
+        <p class="empty-subtitle">Loading...</p>
+    </div>
+
+    <!-- Video grid -->
+    <div class="video-grid" *ngIf="!isLoading && subscriptionVideos.length > 0">
+        <app-video-card
+                *ngFor="let video of subscriptionVideos"
+                [video]="video">
+        </app-video-card>
+    </div>
+</div>
