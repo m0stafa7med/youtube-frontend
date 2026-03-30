@@ -51,8 +51,25 @@
                              (click)="addToPlaylist(playlist.id)">
                             {{ playlist.name }}
                         </div>
-                        <div class="playlist-dropdown-empty" *ngIf="userPlaylists.length === 0">
+                        <div class="playlist-dropdown-empty" *ngIf="userPlaylists.length === 0 && !showCreatePlaylist">
                             No playlists found
+                        </div>
+                        <div class="playlist-dropdown-divider"></div>
+                        <div class="playlist-create-inline" *ngIf="showCreatePlaylist">
+                            <input type="text"
+                                   class="playlist-create-input"
+                                   [(ngModel)]="newPlaylistName"
+                                   placeholder="Playlist name"
+                                   (keyup.enter)="createPlaylistAndAdd()">
+                            <div class="playlist-create-actions">
+                                <button class="playlist-create-btn cancel" (click)="showCreatePlaylist = false">Cancel</button>
+                                <button class="playlist-create-btn create" (click)="createPlaylistAndAdd()">Create</button>
+                            </div>
+                        </div>
+                        <div class="playlist-dropdown-item create-new" *ngIf="!showCreatePlaylist"
+                             (click)="showCreatePlaylist = true">
+                            <mat-icon>add</mat-icon>
+                            Create new playlist
                         </div>
                     </div>
                 </div>

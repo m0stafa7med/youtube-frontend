@@ -1,59 +1,70 @@
 <div class="playlist-list-container">
-    <div class="playlist-header">
-        <h3>Your Playlists</h3>
-        <button mat-raised-button color="primary" (click)="toggleCreateForm()">
-            <mat-icon>add</mat-icon>
-            Create Playlist
-        </button>
+    <!-- Not logged in -->
+    <div class="empty-state" *ngIf="!isAuthenticated && !loading">
+        <mat-icon class="empty-icon">playlist_play</mat-icon>
+        <p class="empty-title">Sign in to view your playlists</p>
+        <p class="empty-subtitle">Create and manage playlists to organize your favorite videos</p>
     </div>
 
-    <!-- Create Playlist Form -->
-    <div class="create-form" *ngIf="showCreateForm">
-        <mat-card class="form-card">
-            <div class="form-field">
-                <label>Name</label>
-                <input type="text"
-                       [(ngModel)]="newPlaylistName"
-                       placeholder="Playlist name">
-            </div>
-            <div class="form-field">
-                <label>Description</label>
-                <textarea [(ngModel)]="newPlaylistDescription"
-                          placeholder="Playlist description"
-                          rows="3"></textarea>
-            </div>
-            <div class="form-field">
-                <label>Visibility</label>
-                <select [(ngModel)]="newPlaylistVisibility">
-                    <option value="PUBLIC">Public</option>
-                    <option value="PRIVATE">Private</option>
-                </select>
-            </div>
-            <div class="form-actions">
-                <button mat-button (click)="toggleCreateForm()">Cancel</button>
-                <button mat-raised-button color="primary" (click)="createPlaylist()">Create</button>
-            </div>
-        </mat-card>
-    </div>
+    <!-- Logged in content -->
+    <ng-container *ngIf="isAuthenticated">
+        <div class="playlist-header">
+            <h3>Your Playlists</h3>
+            <button mat-raised-button color="primary" (click)="toggleCreateForm()">
+                <mat-icon>add</mat-icon>
+                Create Playlist
+            </button>
+        </div>
 
-    <app-loading-spinner *ngIf="loading" message="Loading playlists..."></app-loading-spinner>
+        <!-- Create Playlist Form -->
+        <div class="create-form" *ngIf="showCreateForm">
+            <mat-card class="form-card">
+                <div class="form-field">
+                    <label>Name</label>
+                    <input type="text"
+                           [(ngModel)]="newPlaylistName"
+                           placeholder="Playlist name">
+                </div>
+                <div class="form-field">
+                    <label>Description</label>
+                    <textarea [(ngModel)]="newPlaylistDescription"
+                              placeholder="Playlist description"
+                              rows="3"></textarea>
+                </div>
+                <div class="form-field">
+                    <label>Visibility</label>
+                    <select [(ngModel)]="newPlaylistVisibility">
+                        <option value="PUBLIC">Public</option>
+                        <option value="PRIVATE">Private</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button mat-button (click)="toggleCreateForm()">Cancel</button>
+                    <button mat-raised-button color="primary" (click)="createPlaylist()">Create</button>
+                </div>
+            </mat-card>
+        </div>
 
-    <!-- Playlists Grid -->
-    <div class="playlists-grid" *ngIf="!loading && playlists.length > 0">
-        <mat-card class="playlist-card" *ngFor="let playlist of playlists"
-                  [routerLink]="'/playlist/' + playlist.id">
-            <div class="playlist-icon">
-                <mat-icon>playlist_play</mat-icon>
-            </div>
-            <div class="playlist-info">
-                <h4 class="playlist-name">{{ playlist.name }}</h4>
-                <span class="playlist-meta">{{ playlist.videoIds.length }} videos</span>
-                <span class="playlist-visibility">{{ playlist.visibility }}</span>
-            </div>
-        </mat-card>
-    </div>
+        <app-loading-spinner *ngIf="loading" message="Loading playlists..."></app-loading-spinner>
 
-    <div class="no-playlists" *ngIf="!loading && playlists.length === 0">
-        <p>You don't have any playlists yet. Create one to get started!</p>
-    </div>
+        <!-- Playlists Grid -->
+        <div class="playlists-grid" *ngIf="!loading && playlists.length > 0">
+            <mat-card class="playlist-card" *ngFor="let playlist of playlists"
+                      [routerLink]="'/playlist/' + playlist.id">
+                <div class="playlist-icon">
+                    <mat-icon>playlist_play</mat-icon>
+                </div>
+                <div class="playlist-info">
+                    <h4 class="playlist-name">{{ playlist.name }}</h4>
+                    <span class="playlist-meta">{{ playlist.videoIds.length }} videos</span>
+                    <span class="playlist-visibility">{{ playlist.visibility }}</span>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="no-playlists" *ngIf="!loading && playlists.length === 0">
+            <mat-icon class="empty-icon-small">playlist_play</mat-icon>
+            <p>No playlists yet. Create one to get started!</p>
+        </div>
+    </ng-container>
 </div>

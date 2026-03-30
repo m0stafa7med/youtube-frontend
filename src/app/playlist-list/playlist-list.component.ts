@@ -9,6 +9,7 @@ import {RouterLink} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
+import {OidcSecurityService} from "angular-auth-oidc-client";
 
 @Component({
     selector: 'app-playlist-list',
@@ -31,34 +32,38 @@ export class PlaylistListComponent implements OnInit {
     playlists: PlaylistDto[] = [];
     loading: boolean = true;
     showCreateForm: boolean = false;
+    isAuthenticated: boolean = false;
 
     newPlaylistName: string = '';
     newPlaylistDescription: string = '';
     newPlaylistVisibility: string = 'PUBLIC';
 
     constructor(private playlistService: PlaylistService,
-                private userService: UserService) {
+                private userService: UserService,
+                private oidcSecurityService: OidcSecurityService) {
     }
 
     ngOnInit(): void {
-        this.loadPlaylists();
+        this.oidcSecurityService.isAuthenticated$.subscribe(({isAuthenticated}) => {
+            this.isAuthenticated = isAuthenticated;
+            if (isAuthenticated) {
+                this.loadPlaylists();
+            } else {
+                this.loading = false;
+            }
+        });
     }
 
     loadPlaylists(): void {
-        const userId = this.userService.getUserId();
-        if (userId) {
-            this.playlistService.getUserPlaylists(userId).subscribe({
-                next: (playlists) => {
-                    this.playlists = playlists;
-                    this.loading = false;
-                },
-                error: () => {
-                    this.loading = false;
-                }
-            });
-        } else {
-            this.loading = false;
-        }
+        this.playlistService.getMyPlaylists().subscribe({
+            next: (playlists) => {
+                this.playlists = playlists;
+                this.loading = false;
+            },
+            error: () => {
+                this.loading = false;
+            }
+        });
     }
 
     toggleCreateForm(): void {
@@ -77,7 +82,7 @@ export class PlaylistListComponent implements OnInit {
             id: '',
             name: this.newPlaylistName,
             description: this.newPlaylistDescription,
-            userId: this.userService.getUserId(),
+            userId: '',
             videoIds: [],
             visibility: this.newPlaylistVisibility,
             createdAt: ''

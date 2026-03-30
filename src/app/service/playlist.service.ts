@@ -24,6 +24,10 @@ export class PlaylistService {
         return this.httpClient.get<PlaylistDto[]>(`${environment.apiUrl}/playlists/user/${userId}`);
     }
 
+    getMyPlaylists(): Observable<PlaylistDto[]> {
+        return this.httpClient.get<PlaylistDto[]>(`${environment.apiUrl}/playlists/my`);
+    }
+
     addVideoToPlaylist(playlistId: string, videoId: string): Observable<any> {
         return this.httpClient.post<any>(`${environment.apiUrl}/playlists/${playlistId}/videos/${videoId}`, null);
     }

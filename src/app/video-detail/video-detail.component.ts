@@ -41,6 +41,9 @@ export class VideoDetailComponent implements OnInit {
     showPlaylistMenu: boolean = false;
     userPlaylists: PlaylistDto[] = [];
     isAuthenticated: boolean = false;
+    showCreatePlaylist: boolean = false;
+    newPlaylistName: string = '';
+    playlistsLoaded: boolean = false;
 
     constructor(private activatedRoute: ActivatedRoute,
                 private videoService: VideoService,
@@ -167,10 +170,11 @@ export class VideoDetailComponent implements OnInit {
 
     togglePlaylistMenu(): void {
         this.showPlaylistMenu = !this.showPlaylistMenu;
-        if (this.showPlaylistMenu && this.userPlaylists.length === 0 && this.currentUserId) {
-            this.playlistService.getUserPlaylists(this.currentUserId).subscribe({
+        if (this.showPlaylistMenu && !this.playlistsLoaded && this.isAuthenticated) {
+            this.playlistService.getMyPlaylists().subscribe({
                 next: (playlists) => {
                     this.userPlaylists = playlists;
+                    this.playlistsLoaded = true;
                 }
             });
         }
@@ -184,6 +188,36 @@ export class VideoDetailComponent implements OnInit {
             },
             error: () => {
                 this.matSnackBar.open('Failed to add to playlist', 'OK', {duration: 3000});
+            }
+        });
+    }
+
+    createPlaylistAndAdd(): void {
+        if (!this.newPlaylistName.trim()) return;
+        const playlist: PlaylistDto = {
+            id: '',
+            name: this.newPlaylistName,
+            description: '',
+            userId: '',
+            videoIds: [],
+            visibility: 'PUBLIC',
+            createdAt: ''
+        };
+        this.playlistService.createPlaylist(playlist).subscribe({
+            next: (created) => {
+                this.userPlaylists.push(created);
+                this.newPlaylistName = '';
+                this.showCreatePlaylist = false;
+                // Auto-add current video to the new playlist
+                this.playlistService.addVideoToPlaylist(created.id, this.videoId).subscribe({
+                    next: () => {
+                        this.matSnackBar.open('Created playlist and added video', 'OK', {duration: 3000});
+                        this.showPlaylistMenu = false;
+                    }
+                });
+            },
+            error: () => {
+                this.matSnackBar.open('Failed to create playlist', 'OK', {duration: 3000});
             }
         });
     }

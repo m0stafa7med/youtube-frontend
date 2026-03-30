@@ -126,9 +126,49 @@
 
 .no-playlists {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 60px;
     color: var(--text-secondary);
     font-size: 14px;
     font-family: Roboto, sans-serif;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.empty-icon-small {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.empty-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+}
+
+.empty-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
 }
